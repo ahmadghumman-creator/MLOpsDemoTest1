@@ -36,7 +36,7 @@ jobs:
           #echo "1234"
           #echo ${ secrets.CONN_STR_AZDLAT }
 
-          dvc remote modify --local myremote connection_string env.AZ_CS
+          dvc remote modify --local myremote connection_string ${{env.AZ_CS}}
           
           dvc pull
           dvc repro
