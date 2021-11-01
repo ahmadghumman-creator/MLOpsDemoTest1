@@ -2,7 +2,7 @@ name: MLOpsDemoTest
 on: [push]
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     # optionally use a convenient Ubuntu LTS + DVC + CML image
     container: docker://ghcr.io/iterative/cml:0-dvc2-base1    
     steps:
@@ -17,6 +17,7 @@ jobs:
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AZ_CS: ${{ secrets.CONN_STR_AZDLAT }}
         run: |
           pip install wget
           pip install sklearn
@@ -24,7 +25,11 @@ jobs:
           pip install seaborn
           pip install matplotlib
           pip install dvc
+          pip install dvc[azure]
           
+          dvc remote modify --local myremote connection_string ${{env.AZ_CS}}
+          
+          dvc pull
           dvc repro
           
           git fetch --prune
