@@ -24,6 +24,7 @@ jobs:
           pip install seaborn
           pip install matplotlib
           pip install dvc
+          pip install dvc[azure]
           
           dvc pull
           dvc repro
