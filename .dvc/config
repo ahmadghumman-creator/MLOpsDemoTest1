@@ -1,4 +1,4 @@
 [core]
     remote = myremote
 ['remote "myremote"']
-    url = azure://dvcdataversioning/folder
+    url = azure://mlopsdemotest1/folder
