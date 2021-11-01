@@ -27,9 +27,15 @@ jobs:
           pip install dvc
           pip install dvc[azure]
           
-          echo env.AZ_CS
+          echo "Hello"
+          echo ${{env.AZ_CS}}
+          
+          echo "123"
           echo ${{ secrets.CONN_STR_AZDLAT }}
           
+          echo "1234"
+          echo ${ secrets.CONN_STR_AZDLAT }
+
           dvc remote modify --local myremote connection_string env.AZ_CS
           
           dvc pull
