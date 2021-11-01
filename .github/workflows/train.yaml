@@ -17,6 +17,7 @@ jobs:
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AZ_CS: ${{ secrets.CONN_STR_AZDLAT }}
         run: |
           pip install wget
           pip install sklearn
@@ -26,7 +27,7 @@ jobs:
           pip install dvc
           pip install dvc[azure]
           
-          dvc remote modify --local myremote connection_string ${{ secrets.CONN_STR_AZDLAT }}
+          dvc remote modify --local myremote connection_string env.AZ_CS
           
           dvc pull
           dvc repro
