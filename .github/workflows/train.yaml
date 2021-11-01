@@ -27,7 +27,7 @@ jobs:
           pip install dvc[azure]
           
           dvc remote modify --local myremote connection_string ${{ secrets.CONN_STR_AZDLAT }}
-          #echo "Hello"
+          
           dvc pull
           dvc repro
           
