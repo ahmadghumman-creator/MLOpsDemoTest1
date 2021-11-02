@@ -28,7 +28,7 @@ X = imp.transform(X)
 
 
 # Linear model
-clf = LinearDiscriminantAnalysis(solver='eigen',shrinkage='float')
+clf = LinearDiscriminantAnalysis(solver='eigen',shrinkage='auto')
 yhat = cross_val_predict(clf, X, y, cv=5)
 
 acc = np.mean(yhat==y)
