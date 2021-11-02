@@ -29,6 +29,8 @@ jobs:
           
           dvc remote modify --local myremote connection_string ${{env.AZ_CS}}
           
+          echo "fetched data"
+          
           dvc pull
           dvc repro
           
